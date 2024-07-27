@@ -1,0 +1,16 @@
+<div class="m-8 w-[800px] min-w-[700px]">
+    <LiveMonacoEditor.code_editor
+        phx-update="ignore"
+        style="min-height: 250px; max-height: 500px; width: 100%;"
+        value={ReactiveRiverWeb.Editor.EditorLive.get_level_code}
+        opts={ReactiveRiverWeb.Editor.EditorLive.get_opts}
+    />
+</div>
+
+<button
+    class="m-8 p-2 bg-blue-500 text-white rounded-md"
+    phx-click="test-code">
+    Test
+</button>
+
+<img src="/images/river.png" class="m-8 w-[800px] min-w-[700px]" />
