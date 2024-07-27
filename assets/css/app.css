@@ -3,3 +3,48 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+/* @import "../../deps/live_monaco_editor/priv/static/live_monaco_editor.min.css"; */
+
+.mtk1 {
+    color: #9CDCFE !important;
+}
+
+[class*="bracket-highlighting-"] {
+    color: #c4cad6 !important;
+}
+
+.bracket-highlighting-0, 
+.bracket-highlighting-3,
+.bracket-highlighting-6,
+.bracket-highlighting-9,
+.bracket-highlighting-12 {
+    color: #ffd700 !important;
+}
+
+.bracket-highlighting-1, 
+.bracket-highlighting-4,
+.bracket-highlighting-7,
+.bracket-highlighting-10,
+.bracket-highlighting-13 {
+    color: #da70d6 !important;
+}
+
+.bracket-highlighting-2, 
+.bracket-highlighting-5,
+.bracket-highlighting-8,
+.bracket-highlighting-11,
+.bracket-highlighting-14 {
+    color: #179fff !important;
+}
+
+.mtk4 {
+    color: #ce9178 !important;
+}
+
+.mtk5 {
+    color: #608b4e !important;
+}
+
+.mtk9 {
+    color: #1aafb0 !important;
+}
