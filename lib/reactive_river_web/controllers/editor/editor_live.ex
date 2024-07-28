@@ -1,5 +1,6 @@
 defmodule ReactiveRiverWeb.Editor.EditorLive do
   use Phoenix.LiveView
+  import Logger
 
   def mount(_params, _session, socket) do
     {:ok, assign(socket, chapter: 1, level: 1, disable_test: true)}
@@ -9,6 +10,8 @@ defmodule ReactiveRiverWeb.Editor.EditorLive do
     if Map.has_key?(socket.assigns, :code) do
       answer = File.read!("priv/static/levels/testing/level_1/answer_1_1.txt")
       result = ReactiveRiver.ProcessJs.validate_code(socket.assigns.code, {answer, 0})
+
+      Logger.info(inspect(socket.assigns))
 
       case result do
         {:ok, results} ->
@@ -29,17 +32,36 @@ defmodule ReactiveRiverWeb.Editor.EditorLive do
     {:noreply, assign(socket, :code, value)}
   end
 
+  def handle_event("next_level", _params, socket) do
+    {:noreply,
+     socket
+     |> LiveMonacoEditor.change_language("html")
+     |> LiveMonacoEditor.set_value("<h1>New File</h1>")}
+  end
+
   def get_level_code do
-    IO.puts("get_level_code")
-    # IO.puts(params)
     File.read!("priv/static/levels/testing/level_1/prompt_1_1.js")
+  end
+
+  def get_level_result do
+    File.read!("priv/static/levels/testing/level_1/answer_1_1.txt")
   end
 
   def get_opts do
     Map.merge(
       LiveMonacoEditor.default_opts(),
-      %{"language" => "javascript"}
+      %{"language" => "javascript", "wordWrap" => "on"}
     )
+  end
+
+  def get_result(socket) do
+    Logger.info(inspect(socket.assigns))
+
+    if Map.has_key?(socket.assigns, :test_results) do
+      socket.assigns.test_results
+    else
+      ""
+    end
   end
 
   embed_templates "editor_live/*"
