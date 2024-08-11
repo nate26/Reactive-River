@@ -1,0 +1,27 @@
+<div class="m-8 text-white">
+    <div class="w-[800px] min-w-[700px] max-h-[500px]">
+        <LiveMonacoEditor.code_editor
+            id="editor"
+            phx-update="ignore"
+            value={ReactiveRiverWeb.Editor.EditorLive.get_level_code}
+            opts={ReactiveRiverWeb.Editor.EditorLive.get_opts}
+        />
+    </div>
+
+    <p class="mt-8 text-base">
+        Expected output: <br>
+        <%= ReactiveRiverWeb.Editor.EditorLive.get_level_result %>
+    </p>
+
+    <button
+        class="mt-8 p-2 bg-blue-500 rounded-md"
+        phx-click="test-code">
+        Test
+    </button>
+    <span phx-update="append" id="result">
+        <%= ReactiveRiverWeb.Editor.EditorLive.get_result(@socket) %>
+        <%= inspect @socket.assigns %>
+    </span>
+
+    <img src="/images/river.png" class="mt-8 w-[800px] min-w-[700px]" />
+</div>

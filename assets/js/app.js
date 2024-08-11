@@ -29,9 +29,9 @@ Hooks.CodeEditorHook = CodeEditorHook
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
-  longPollFallbackMs: 2500,
-  hooks: Hooks,
-  params: { _csrf_token: csrfToken }
+    longPollFallbackMs: 2500,
+    hooks: Hooks,
+    params: { _csrf_token: csrfToken }
 })
 
 // Show progress bar on live navigation and form submits
@@ -40,11 +40,13 @@ window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
 window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
 
 window.addEventListener("lme:editor_mounted", (ev) => {
-  const hook = ev.detail.hook
-  const editor = ev.detail.editor.standalone_code_editor
-  editor.onDidBlurEditorWidget(() => {
-    hook.pushEvent("code-editor-lost-focus", { value: editor.getValue() })
-  })
+    const hook = ev.detail.hook
+    const editor = ev.detail.editor.standalone_code_editor
+    console.log("editor_mounted", editor.getValue())
+    editor.onDidBlurEditorWidget(() => {
+        console.log("event", editor.getValue())
+        hook.pushEvent("code_change", { value: editor.getValue() })
+    })
 })
 
 // connect if there are any LiveViews on the page

@@ -18,7 +18,7 @@ defmodule ReactiveRiverWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    get "/editor", Editor.EditorController, :editor
+    live "/editor", Editor.EditorLive
   end
 
   # Other scopes may use custom stacks.
