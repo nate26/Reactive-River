@@ -1,0 +1,60 @@
+{
+    "code-prompt": "import { Observable } from 'rxjs';\n\nconst river = new Observable(observer => {\n\n   observer.next('lily_pad');\n    observer.complete();\n});\n\n// TODO: Subscribe to the river and log the items.\n",
+    "expected-output": "lily_pad",
+    "level": 1,
+    "next-level": "chp1/level_2",
+    "title": "Get Data from an Observable",
+    "description": "Subscribe to the Observable to retreive the event of 'lily_pad', and log the event.\nThe subscribe function takes in a callback that will be executed when the Observable emits an event. Use the subscribe method to listen to the Observable and log the event.",
+    "animations": {
+        "franky": {
+            "keyframes": {
+                "0": {
+                    "type": "franky-idle"
+                },
+                "8000": {
+                    "type": "franky-jump"
+                },
+                "10000": {
+                    "type": "franky-jump"
+                }
+            }
+        },
+        "franky-label": {
+            "keyframes": {
+                "0": {
+                    "type": "opaque"
+                },
+                "3000": {
+                    "type": "fade-in",
+                    "value": "Subscribe"
+                }
+            }
+        },
+        "river": {
+            "keyframes": {
+                "0": {
+                    "type": "river-idle"
+                },
+                "3000": {
+                    "type": "river-flow"
+                },
+                "12000": {
+                    "type": "river-idle"
+                }
+            }
+        },
+        "lily_pad": {
+            "keyframes": {
+                "0": {
+                    "type": "opaque"
+                },
+                "3000": {
+                    "type": "lily-pad-flow"
+                },
+                "8000": {
+                    "type": "lily-pad-end"
+                }
+            }
+        }
+    }
+}
